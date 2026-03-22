@@ -1,10 +1,10 @@
 variable "credentials" {
   description = "path to gcloud credentials file"
-  default     = "D:\\Study_DE\\DE-zoomcamp\\project\\key\\my-creds.json"
+  default     = "D:\\Study_DE\\project\\DE-zoomcamp-Project\\key\\de-zoomcamp-2026-485014-d31cf2df6ed3.json"
 }
 variable "project" {
   description = "project"
-  default     = "de-zoom-camp-2026"
+  default     = "de-zoomcamp-2026-485014"
 }
 
 variable "region" {
@@ -12,18 +12,21 @@ variable "region" {
   default     = "asia-southeast1"
 }
 
-variable "location" {
-  description = "project location"
-  default     = "Tokyo"
-}
-
 variable "bq_dataset_name" {
   description = "bigquery dataset name"
-  default     = "de_zoom_camp_2026_terra_dataset"
+  default     = "london_bicycle"
 }
 
 
 variable "bucket_name" {
   description = "gcloud storage bucket name"
-  default     = "de_zoom_camp_2026_terra_bucket"
+  default     = "london_bicycle_485014" # Must be globally unique across all GCS buckets
+}
+
+variable "start_year" {
+  type = number
+}
+
+variable "end_year" {
+  type = number
 }
