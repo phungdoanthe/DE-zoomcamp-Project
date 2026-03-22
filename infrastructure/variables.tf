@@ -23,10 +23,22 @@ variable "bucket_name" {
   default     = "london_bicycle_485014" # Must be globally unique across all GCS buckets
 }
 
-variable "start_year" {
-  type = number
+variable "zone" {
+  description = "GCP zone for Dataproc cluster"
+  default     = "asia-southeast1-c"
 }
 
-variable "end_year" {
-  type = number
+variable "master_machine_type" {
+  description = "Machine type for the master node"
+  default     = "n1-standard-4"
+}
+
+variable "dataproc_image_version" {
+  description = "Dataproc image version"
+  default     = "2.2.76-debian12"
+}
+
+variable "service_account" {
+  description = "Service account id"
+  default = "475663472492-compute@developer.gserviceaccount.com"
 }

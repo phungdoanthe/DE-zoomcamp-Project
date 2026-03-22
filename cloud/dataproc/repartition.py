@@ -34,7 +34,7 @@ if __name__ == "__main__":
         df = df.withColumn("Date", F.to_date("Date", "dd/MM/yyyy"))
 
         # Small dataset → avoid many partitions
-        df = df.coalesce(1)
+        df = df.coalesce(2)
 
         df.write \
           .mode("overwrite") \
