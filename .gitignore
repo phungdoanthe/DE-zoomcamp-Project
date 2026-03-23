@@ -2,3 +2,5 @@
 *.csv
 key/
 uv.lock
+.env
+data/

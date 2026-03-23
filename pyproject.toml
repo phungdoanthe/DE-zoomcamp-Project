@@ -11,3 +11,8 @@ dependencies = [
     "pyspark==3.5.1",
     "python-dotenv>=1.2.2",
 ]
+
+[dependency-groups]
+dev = [
+    "requests>=2.32.5",
+]
