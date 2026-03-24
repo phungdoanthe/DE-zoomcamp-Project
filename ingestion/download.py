@@ -24,7 +24,7 @@ def fetch_all_links(prefix="", year_range=None):
         if token:
             url += f"&continuation-token={urllib.parse.quote(token)}"
 
-        res = requests.get(url, verify=False)
+        res = requests.get(url)
         root = ET.fromstring(res.text)
         ns = {'s3': 'http://s3.amazonaws.com/doc/2006-03-01/'}
 
@@ -66,10 +66,10 @@ def fetch_all_links(prefix="", year_range=None):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--year", type=str, help="Download files in this year range (e.g., 2020-2021)", default=None, required=True)
+    parser.add_argument("--years", type=str, help="Download files in this year range (e.g., 2020-2021)", default=None, required=True)
 
     args = parser.parse_args()
-    years = args.year
+    years = args.years
 
     start_year = int(years.split('-')[0])
     end_year = int(years.split('-')[1])
@@ -77,6 +77,6 @@ if __name__ == "__main__":
     set_key(".env", "START_YEAR", str(start_year))
     set_key(".env", "END_YEAR", str(end_year))
 
-    links = fetch_all_links(PREFIX, args.year)
+    links = fetch_all_links(PREFIX, args.years)
     print(f"Found {len(links)} files")
 

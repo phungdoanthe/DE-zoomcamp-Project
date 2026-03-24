@@ -1,6 +1,6 @@
 variable "credentials" {
   description = "path to gcloud credentials file"
-  default     = "D:\\Study_DE\\project\\DE-zoomcamp-Project\\key\\de-zoomcamp-2026-485014-d31cf2df6ed3.json"
+  default     = "../key/de-zoomcamp-2026-485014.json"
 }
 variable "project" {
   description = "project"
@@ -26,6 +26,11 @@ variable "bucket_name" {
 variable "zone" {
   description = "GCP zone for Dataproc cluster"
   default     = "asia-southeast1-c"
+}
+
+variable "cluster_name" {
+  description = "GCP network for Dataproc cluster"
+  default     = "DE-zoomcamp-cluster"
 }
 
 variable "master_machine_type" {

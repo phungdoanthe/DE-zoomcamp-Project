@@ -4,3 +4,6 @@ key/
 uv.lock
 .env
 data/
+.terraform/
+terraform.tfstate
+.terraform.*/

@@ -49,7 +49,7 @@ resource "google_service_account" "default" {
 }
 
 resource "google_dataproc_cluster" "dataproc" {
-  name   = "dataproc-cluster"
+  name   = var.cluster_name
   region = var.region
 
   cluster_config {
