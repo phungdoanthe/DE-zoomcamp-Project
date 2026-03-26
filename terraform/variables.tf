@@ -30,7 +30,7 @@ variable "zone" {
 
 variable "cluster_name" {
   description = "GCP network for Dataproc cluster"
-  default     = "DE-zoomcamp-cluster"
+  default     = "de-zoomcamp-cluster"
 }
 
 variable "master_machine_type" {

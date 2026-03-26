@@ -7,3 +7,5 @@ data/
 .terraform/
 terraform.tfstate
 .terraform.*/
+.terraform.*
+terraform.*

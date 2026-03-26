@@ -1,13 +1,7 @@
+import sys
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 from pyspark.sql import functions as F
-import os
-
-bucket_name = os.getenv('BUCKET_NAME')
-
-spark = SparkSession.builder \
-    .appName("BikeRepartition") \
-    .getOrCreate()
 
 schema = StructType([
     StructField("Wave", StringType(), True),
@@ -24,20 +18,31 @@ schema = StructType([
 ])
 
 if __name__ == "__main__":
-    for year in range(int(os.getenv("START_YEAR")), int(os.getenv("END_YEAR")) + 1):
-        df = spark.read.csv(
-            f'gs://{bucket_name}/raw/{year}/*.csv',
-            header=True,
-            schema=schema
-        )
+    bucket_name = sys.argv[1]
+    start_year  = int(sys.argv[2])
+    end_year    = int(sys.argv[3])
 
-        df = df.withColumn("Date", F.to_date("Date", "dd/MM/yyyy"))
+    spark = SparkSession.builder \
+        .appName("BikeRepartition") \
+        .getOrCreate()
 
-        # Small dataset → avoid many partitions
-        df = df.coalesce(2)
+    try:
+        for year in range(start_year, end_year + 1):
+            print(f"Processing year {year}...")
 
-        df.write \
-          .mode("overwrite") \
-          .parquet(f"gs://{bucket_name}/parquet/{year}/")
+            df = spark.read.csv(
+                f'gs://{bucket_name}/raw/data/{year}/*.csv',
+                header=True,
+                schema=schema
+            )
 
-spark.stop()
+            df = df.withColumn("Date", F.to_date("Date", "dd/MM/yyyy"))
+            df = df.coalesce(2)
+
+            df.write \
+              .mode("overwrite") \
+              .parquet(f"gs://{bucket_name}/parquet/{year}/")
+
+            print(f"Year {year} done.")
+    finally:
+        spark.stop() 
