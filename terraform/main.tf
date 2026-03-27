@@ -27,6 +27,22 @@ resource "google_storage_bucket" "gcs_london_bicycle" {
   }
 }
 
+resource "google_storage_bucket" "dataproc_temp_bucket" {
+  name          = "dataproc-temp-${var.region}-${var.project}"
+  location      = var.region
+  uniform_bucket_level_access = true
+  force_destroy = true
+
+  lifecycle_rule {
+    action {
+      type = "AbortIncompleteMultipartUpload"
+    }
+    condition {
+      age = 1 // days
+    }
+  }
+}
+
 # ------------------------------------------------------------------------------
 # BIGQUERY DATASET
 # ------------------------------------------------------------------------------
@@ -43,10 +59,10 @@ resource "google_bigquery_dataset" "bq_london_bicycle" {
 # ------------------------------------------------------------------------------
 # DATAPROC CLUSTER
 # ----------------------------------------  --------------------------------------
-resource "google_service_account" "default" {
-  account_id   = var.service_account
-  display_name = "Service Account"
-}
+# resource "google_service_account" "default" {
+#   account_id   = var.service_account
+#   display_name = "Service Account"
+# }
 
 resource "google_dataproc_cluster" "dataproc" {
   name   = var.cluster_name
@@ -62,18 +78,14 @@ resource "google_dataproc_cluster" "dataproc" {
         "disable-legacy-endpoints" = "true"
       }
 
-      service_account = google_service_account.default.email
-      service_account_scopes = [
-        "cloud-platform"
-      ]
     }
 
     master_config {
       num_instances = 1
-      machine_type  = "n4-standard-2"
+      machine_type  = "n1-standard-4"
 
       disk_config {
-        boot_disk_type    = "pd-balanced"   # closest Terraform-supported type
+        boot_disk_type    = "pd-ssd" 
         boot_disk_size_gb = 100
       }
     }

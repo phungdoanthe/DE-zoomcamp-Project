@@ -45,12 +45,15 @@ def fetch_all_links(prefix="", year_range=None):
 
                 year_folder = Path(f"data/{file_year}")
                 year_folder.mkdir(parents=True, exist_ok=True)
+                
+                if (year_folder / filename).exists():
+                    continue
 
                 filepath = year_folder / filename
                                 
                 print(f"Downloading: {filename}")
             
-                with requests.get(link, stream=True, verify=False) as r:
+                with requests.get(link, stream=True) as r:
                     r.raise_for_status()
                     with open(filepath, 'wb') as f:
                         for chunk in r.iter_content(chunk_size=1024*1024):

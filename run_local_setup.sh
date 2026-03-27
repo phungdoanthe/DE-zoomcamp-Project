@@ -3,6 +3,7 @@ set -e
 
 # Fix Windows line endings in all scripts
 find . -type f -name "*.sh" -exec sed -i 's/\r$//' {} +
+sed -i 's/\r//' .env
 
 # Load environment variables
 if [ -f .env ]; then
