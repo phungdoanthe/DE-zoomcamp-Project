@@ -1,0 +1,52 @@
+seeds:
+  - name: monitoring_location
+    description: "Monitoring station metadata including location and classification."
+
+    columns:
+      - name: Site ID
+        description: "Unique identifier for each monitoring site."
+        tests:
+          - not_null
+          - unique
+
+      - name: Location description
+        description: "Human-readable description of the monitoring site."
+
+      - name: Borough
+        description: "Administrative borough where the monitoring site is located."
+        tests:
+          - not_null
+
+      - name: Functional area for monitoring
+        description: "Monitoring classification (e.g., '01 Central')."
+        tests:
+          - not_null
+
+      - name: Road type
+        description: "Type of road (e.g., '01 A Road')."
+        tests:
+          - not_null
+
+      - name: Is it on the strategic CIO panel?
+        description: "Flag indicating if the site is part of CIO panel (1 = Yes, 0 = No)."
+        tests:
+          - not_null
+          
+      - name: Old site ID (legacy)
+        description: "Legacy identifier (e.g., CENCY001)."
+
+      - name: Easting (UK Grid)
+        description: "Easting coordinate in UK National Grid."
+
+      - name: Northing (UK Grid)
+        description: "Northing coordinate in UK National Grid."
+
+      - name: Latitude
+        description: "Latitude coordinate."
+        tests:
+          - not_null
+
+      - name: Longitude
+        description: "Longitude coordinate."
+        tests:
+          - not_null
