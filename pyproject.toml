@@ -9,6 +9,7 @@ dependencies = [
     "pandas>=2.3.3",
     "pyspark==3.5.1",
     "python-dotenv>=1.2.2",
-    "requests"
+    "requests",
+    "streamlit>=1.55.0",
 ]
 
