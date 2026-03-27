@@ -1,0 +1,58 @@
+sources:
+  - name: raw
+    description: "Raw London bicycle render count data"
+
+    database: {{ env_var('PROJECT_ID') }}
+    schema: london_bicycle
+    tables:
+      - name: london_bike_counts
+        identifier: ext_london_bicycle
+        description: "Raw London bicycle count data loaded from GCS parquet files"
+
+        columns:
+          - name: Wave
+            data_type: STRING
+            description: "Survey wave and season label"
+
+          - name: SiteID
+            data_type: STRING
+            description: "Unique site identifier"
+            tests: [not_null]
+
+          - name: Date
+            data_type: DATE
+            description: "Observation date"
+            tests: [not_null]
+
+          - name: Weather
+            data_type: STRING
+            description: "Weather condition during count"
+
+          - name: Time
+            data_type: TIME
+            description: "Time of observation"
+
+          - name: Day
+            data_type: STRING
+            description: "Weekday or weekend indicator"
+
+          - name: Round
+            data_type: STRING
+            description: "Survey round label"
+
+          - name: Direction
+            data_type: STRING
+            description: "Direction of travel"
+
+          - name: Path
+            data_type: STRING
+            description: "Type of road or cycling path"
+
+          - name: Mode
+            data_type: STRING
+            description: "Type of bicycle"
+
+          - name: Count
+            data_type: INT64
+            description: "Number of bicycles counted"
+            tests: [not_null]

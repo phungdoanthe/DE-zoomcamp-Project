@@ -1,0 +1,29 @@
+[0m09:46:36.079096 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E6D76AFA00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E6D54D1840>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E6D54D0B20>]}
+
+
+============================== 09:46:36.129081 | 4c001647-5bae-462e-8f0f-418b00b77fda ==============================
+[0m09:46:36.129081 [info ] [MainThread]: Running with dbt=1.11.7
+[0m09:46:36.129081 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\phungdoan\\.dbt', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt init', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m09:47:40.206257 [debug] [MainThread]: Starter project path: C:\Users\phungdoan\.vscode\project\DE\De-zoomcamp-project\DE-zoomcamp-Project\dbt\.venv\lib\site-packages\dbt\include\starter_project
+[0m09:47:40.252553 [info ] [MainThread]: 
+Your new dbt project "dbt_bigquery_transformation" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m09:47:40.252553 [info ] [MainThread]: Setting up your profile.
+[0m10:03:44.155328 [info ] [MainThread]: Profile dbt_bigquery_transformation written to C:\Users\phungdoan\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m10:03:44.162486 [debug] [MainThread]: Command `dbt init` succeeded at 10:03:44.162486 after 1028.25 seconds
+[0m10:03:44.164495 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E6D76AFA00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E6D720AA70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E6D9ABC910>]}
+[0m10:03:44.165909 [debug] [MainThread]: Flushing usage events
+[0m10:03:45.384785 [debug] [MainThread]: An error was encountered while trying to flush usage events

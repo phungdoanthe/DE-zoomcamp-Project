@@ -3,7 +3,7 @@ name = "de-zoomcamp-project"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.10,<3.12"
 dependencies = [
     "google-cloud-storage>=3.10.0",
     "pandas>=2.3.3",
@@ -13,3 +13,5 @@ dependencies = [
     "streamlit>=1.55.0",
 ]
 
+[tool.uv.workspace]
+exclude = ["dbt"]

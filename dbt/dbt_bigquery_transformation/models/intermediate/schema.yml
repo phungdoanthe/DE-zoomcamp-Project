@@ -1,0 +1,53 @@
+models:
+  - name: int_bike_counts_enriched
+    description: "Intermediate model that cleans, deduplicates, and enriches bike counts with monitoring location metadata"
+
+    columns:
+      - name: MonitorID
+        data_type: STRING
+        description: "Surrogate key uniquely identifying each monitoring record"
+        tests:
+          - not_null
+          - unique
+
+      - name: SiteID
+        data_type: STRING
+        description: "Unique monitoring site identifier"
+        tests:
+          - not_null
+
+      - name: Date
+        data_type: DATE
+        description: "Observation date"
+
+      - name: Year
+        data_type: INT64
+        description: "Year extracted from observation date"
+
+      - name: Weather
+        data_type: STRING
+        description: "Weather condition during observation"
+
+      - name: Time
+        data_type: TIME
+        description: "Time of monitoring"
+
+      - name: Mode
+        data_type: STRING
+        description: "Type of bicycle counted"
+
+      - name: Bike_count
+        data_type: INT64
+        description: "Number of bicycles counted"
+
+      - name: Location_desc
+        data_type: STRING
+        description: "Human-readable description of monitoring location"
+
+      - name: Borough
+        data_type: STRING
+        description: "London borough where monitoring took place"
+
+      - name: Functional_area
+        data_type: STRING
+        description: "Functional classification of monitoring area"

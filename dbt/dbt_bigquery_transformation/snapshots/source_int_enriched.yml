@@ -1,0 +1,11 @@
+snapshots:
+    - name: source_int_enriched
+      description: "Snapshot of the enrieched intermediate table"
+      relation: ref('int_bike_counts_enriched')
+      config:
+        schema: intermediate
+        database: {{ env_var('GCP_PROJECT') }}
+        unique_key: MonitorID
+        strategy: timestamp
+        updated_at: updateDate
+        dbt_valid_to_current: "to_date('9999-12-31')"

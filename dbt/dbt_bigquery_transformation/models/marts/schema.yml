@@ -1,0 +1,63 @@
+models:
+  - name: rpt_counts_by_weather_year
+    description: "Total bicycle counts aggregated by weather condition and year"
+    config:
+      materialized: table
+
+    columns:
+      - name: Weather
+        data_type: STRING
+        description: "Weather condition during the count period"
+        tests: [not_null]
+
+      - name: Year
+        data_type: INT64
+        description: "Year of observation"
+        tests: [not_null]
+
+      - name: Total_bike_count
+        data_type: INT64
+        description: "Total number of bicycles counted for this weather and year combination"
+        tests: [not_null]
+
+  - name: rpt_counts_by_mode
+    description: "Total bicycle counts and percentage share broken down by bicycle mode"
+    config:
+      materialized: table
+
+    columns:
+      - name: Mode
+        data_type: STRING
+        description: "Type of bicycle"
+        tests: [not_null, unique]
+
+      - name: Total_rents
+        data_type: INT64
+        description: "Total number of bicycles counted for this mode"
+        tests: [not_null]
+
+      - name: Percentage
+        data_type: FLOAT64
+        description: "Percentage share of this mode out of all bicycle counts"
+        tests: [not_null]
+
+  - name: rpt_peak_times_by_area
+    description: "Peak cycling times per functional monitoring area, showing the time slot with the highest count"
+    config:
+      materialized: table
+
+    columns:
+      - name: Functional_area
+        data_type: STRING
+        description: "Functional monitoring area"
+        tests: [not_null]
+
+      - name: Time
+        data_type: TIME
+        description: "Time slot with the highest bicycle count for this area"
+        tests: [not_null]
+
+      - name: Total_rents
+        data_type: INT64
+        description: "Total bicycle count at the peak time for this area"
+        tests: [not_null]

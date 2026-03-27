@@ -1,0 +1,34 @@
+models:
+  - name: stg_london_bike_counts
+    description: "Staging model that cleans and standardizes London bicycle count data"
+
+    columns:
+      - name: SiteID
+        data_type: STRING
+        description: "Unique site identifier where count was recorded"
+        tests:
+          - not_null
+
+      - name: date
+        data_type: DATE
+        description: "Observation date converted to DATE type"
+        tests:
+          - not_null
+
+      - name: year
+        data_type: INT64
+        description: "Year extracted from observation date"
+
+      - name: Weather
+        data_type: STRING
+        description: "Weather condition during observation"
+
+      - name: Mode
+        data_type: STRING
+        description: "Type of bicycle"
+
+      - name: bike_count
+        data_type: INT64
+        description: "Number of bicycles counted"
+        tests:
+          - not_null
