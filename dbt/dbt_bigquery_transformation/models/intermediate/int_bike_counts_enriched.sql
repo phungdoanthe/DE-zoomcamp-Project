@@ -18,18 +18,18 @@ cleaned_and_enriched as (
         bc.bike_count as Bike_count,
         CURRENT_TIMESTAMP() as updateDate,
 
-        l."Location description" as Location_desc,
-        l.Borough as Borough,
-        l."Functional area for monitoring" as Functional_area,
+        l.location_description as Location_desc,
+        l.borough as Borough,
+        l.functional_area_for_monitoring as Functional_area,
         
     from bike_counts as bc
     join m_location as l
-    on bc.SiteID = l.SiteID
+    on bc.SiteID = l.site_id
 )
 
 select * from cleaned_and_enriched
 
-quality row_number() over(
-    parition by SiteID, Date, Time
+qualify row_number() over(
+    partition by SiteID, Date, Time
     order by Date, Time
 ) = 1

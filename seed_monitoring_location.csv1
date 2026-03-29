@@ -6,3 +6,4 @@ ML0004,Southwark Bridge Road,Southwark,01 Central,01 A Road,1,CENCY004,532052.5,
 ML0005,Tooley Street,Southwark,01 Central,01 A Road,1,CENCY005,533031.59,180213.46,51.5052,-0.084629047
 ML0006,Southwark Bridge Road (north - between Flat Iron Square and America Street),Southwark,01 Central,01 A Road,1,CENCY006,532263.5,180067.71,51.504068,-0.095742803
 .... Add more by downloading this from "https://cycling.data.tfl.gov.uk/ActiveTravelCountsProgramme/1%20Monitoring%20locations.csv"
+put this under the seeds folder and run `dbt seed`

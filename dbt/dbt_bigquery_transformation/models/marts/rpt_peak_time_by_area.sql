@@ -1,10 +1,4 @@
-{{
-  config(
-    materialized='incremental',
-    unique_key='MonitorID',
-    incremental_strategy='merge',
-    on_schema_change='append_new_columns'  )
-}}
+{{ config(materialized='table') }}
 
 with total_rents_by_func_time as (
     select

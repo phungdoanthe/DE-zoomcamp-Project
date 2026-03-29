@@ -4,7 +4,7 @@ snapshots:
       relation: ref('int_bike_counts_enriched')
       config:
         schema: intermediate
-        database: {{ env_var('GCP_PROJECT') }}
+        database: "{{ env_var('PROJECT_ID') }}"
         unique_key: MonitorID
         strategy: timestamp
         updated_at: updateDate

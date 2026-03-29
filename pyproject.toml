@@ -3,15 +3,16 @@ name = "de-zoomcamp-project"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.10,<3.12"
+requires-python = ">=3.11,<3.12"
 dependencies = [
-    "google-cloud-storage>=3.10.0",
+
+    "google-cloud-storage",
     "pandas>=2.3.3",
     "pyspark==3.5.1",
     "python-dotenv>=1.2.2",
     "requests",
     "streamlit>=1.55.0",
-]
+    "dbt-bigquery",
+    "dbt-core",
 
-[tool.uv.workspace]
-exclude = ["dbt"]
+]
