@@ -9,5 +9,5 @@ terraform.tfstate
 .terraform.*/
 .terraform.*
 terraform.*
-*logs/
+logs/
 *.log
