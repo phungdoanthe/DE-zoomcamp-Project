@@ -1,3 +1,5 @@
+{{ config(materialized='view') }}
+
 SELECT
     SiteID,
     DATE(Date) AS date,

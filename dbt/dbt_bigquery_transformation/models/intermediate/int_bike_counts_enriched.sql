@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 with bike_counts as (
     select * from {{ ref('stg_london_bike_counts') }}
 ),

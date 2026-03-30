@@ -20,7 +20,7 @@ client = bigquery.Client(
     project=os.getenv("PROJECT_ID")
 )
 
-DATASET = os.getenv("BiGQUERY_DATASET_NAME")  # change to your dbt output dataset
+DATASET = os.getenv("BiGQUERY_DATASET_NAME")
 
 @st.cache_data(ttl=3600)  # cache for 1 hour
 def query(sql: str) -> pd.DataFrame:
