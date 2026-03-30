@@ -13,14 +13,15 @@ env_path = Path(__file__).resolve().parent.parent / ".env"
 load_dotenv(dotenv_path=env_path)
 
 # --- Auth ---
-credentials = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+cred_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+credentials = service_account.Credentials.from_service_account_file(cred_path)
 
 client = bigquery.Client(
     credentials=credentials,
     project=os.getenv("PROJECT_ID")
 )
 
-DATASET = os.getenv("BiGQUERY_DATASET_NAME")
+DATASET = f"{os.getenv('BIGQUERY_DATASET_NAME')}_marts"
 
 @st.cache_data(ttl=3600)  # cache for 1 hour
 def query(sql: str) -> pd.DataFrame:
